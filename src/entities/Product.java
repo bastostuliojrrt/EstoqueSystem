@@ -2,7 +2,7 @@ package entities;
 
 import java.util.Date;
 
-public class Produto {
+public class Product {
 
     private String idProduct;
     private String code;
@@ -11,7 +11,7 @@ public class Produto {
     private String supplier;
     private Date registrationDate;
 
-    public Produto(String idProduct, String code, String name, String description, String supplier, Date registrationDate) {
+    public Product(String idProduct, String code, String name, String description, String supplier, Date registrationDate) {
         this.idProduct = idProduct;
         this.code = code;
         this.name = name;
@@ -20,24 +20,9 @@ public class Produto {
         this.registrationDate = registrationDate;
     }
 
-    public Produto() {
+    public Product() {
 
     }
-
-    @Override
-    public String toString() {
-        return "Produto{" +
-                "idProduct='" + idProduct + '\'' +
-                ", code='" + code + '\'' +
-                ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                ", supplier='" + supplier + '\'' +
-                ", registrationDate=" + registrationDate +
-                '}';
-    }
-
-
-
 
     public String getIdProduct() {
         return idProduct;
@@ -86,4 +71,18 @@ public class Produto {
     public void setRegistrationDate(Date registrationDate) {
         this.registrationDate = registrationDate;
     }
+
+    @Override
+    public String toString() {
+        return "Produto{" +
+                "idProduct='" + idProduct + '\'' +
+                ", code='" + code + '\'' +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", supplier='" + supplier + '\'' +
+                ", registrationDate=" + registrationDate +
+                '}';
+    }
+
+
 }
