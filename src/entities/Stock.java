@@ -1,21 +1,21 @@
 package entities;
 
+import java.util.List;
+
 public class Stock {
 
     private String idStock;
-    private Product product;
+    private List<Product> listProducts;
     private String storage;
-    private String shelf;
 
     public Stock(){
 
     }
 
-    public Stock(String idStock, Product product, String storage, String shelf) {
+    public Stock(String idStock, List<Product> listProducts, String storage) {
         this.idStock = idStock;
-        this.product = product;
+        this.listProducts = listProducts;
         this.storage = storage;
-        this.shelf = shelf;
     }
 
     public String getIdStock() {
@@ -26,12 +26,12 @@ public class Stock {
         this.idStock = idStock;
     }
 
-    public Product getProduct() {
-        return product;
+    public List<Product> getListProducts() {
+        return listProducts;
     }
 
-    public void setProduct(Product product) {
-        this.product = product;
+    public void setListProducts(List<Product> listProducts) {
+        this.listProducts = listProducts;
     }
 
     public String getStorage() {
@@ -42,21 +42,13 @@ public class Stock {
         this.storage = storage;
     }
 
-    public String getShelf() {
-        return shelf;
-    }
-
-    public void setShelf(String shelf) {
-        this.shelf = shelf;
-    }
 
     @Override
     public String toString() {
         return "Stock{" +
                 "idStock='" + idStock + '\'' +
-                ", product=" + product +
+                ", product=" + listProducts +
                 ", storage='" + storage + '\'' +
-                ", shelf='" + shelf + '\'' +
                 '}';
     }
 }

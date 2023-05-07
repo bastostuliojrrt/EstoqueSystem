@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class Supplier extends Person{
 
-    private String idSupplier;
+    private int idSupplier;
     private String name;
     private String cgc;
     private Date registrationDate;
@@ -13,7 +13,7 @@ public class Supplier extends Person{
 
     }
 
-    public Supplier(String address, String city, String state, String postalCode, String cellPhone, String email, String idSupplier, String name, String cgc, Date registrationDate) {
+    public Supplier(String address, String city, String state, String postalCode, String cellPhone, String email, int idSupplier, String name, String cgc, Date registrationDate) {
         super(address, city, state, postalCode, cellPhone, email);
         this.idSupplier = idSupplier;
         this.name = name;
@@ -21,11 +21,11 @@ public class Supplier extends Person{
         this.registrationDate = registrationDate;
     }
 
-    public String getIdSupplier() {
+    public int getIdSupplier() {
         return idSupplier;
     }
 
-    public void setIdSupplier(String idSupplier) {
+    public void setIdSupplier(int idSupplier) {
         this.idSupplier = idSupplier;
     }
 

@@ -4,40 +4,33 @@ import java.util.Date;
 
 public class Product {
 
-    private String idProduct;
-    private String code;
+    private int idProduct;
     private String name;
     private String description;
-    private String supplier;
+    private int idSupplier;
+    private int quantity;
     private Date registrationDate;
-
-    public Product(String idProduct, String code, String name, String description, String supplier, Date registrationDate) {
-        this.idProduct = idProduct;
-        this.code = code;
-        this.name = name;
-        this.description = description;
-        this.supplier = supplier;
-        this.registrationDate = registrationDate;
-    }
 
     public Product() {
 
     }
 
-    public String getIdProduct() {
+    // Método de cadastro do produto
+    public void registerProduct(int idProduct, String name, String description, int idSupplier, int quantity, Date registrationDate){
+        setIdProduct(idProduct);
+        setName(name);
+        setDescription(description);
+        setIdSupplier(idSupplier);
+        setIdSupplier(idSupplier);
+        setRegistrationDate(registrationDate);
+    }
+
+    public int getIdProduct() {
         return idProduct;
     }
 
-    public void setIdProduct(String idProduct) {
+    public void setIdProduct(int idProduct) {
         this.idProduct = idProduct;
-    }
-
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
     }
 
     public String getName() {
@@ -56,12 +49,20 @@ public class Product {
         this.description = description;
     }
 
-    public String getSupplier() {
-        return supplier;
+    public int getIdSupplier() {
+        return idSupplier;
     }
 
-    public void setSupplier(String supplier) {
-        this.supplier = supplier;
+    public void setIdSupplier(int idSupplier) {
+        this.idSupplier = idSupplier;
+    }
+
+    public int getQuantity(){
+        return quantity;
+    }
+
+    public void setQuantity(int quantity){
+        this.idSupplier = idSupplier;
     }
 
     public Date getRegistrationDate() {
@@ -76,10 +77,10 @@ public class Product {
     public String toString() {
         return "Produto{" +
                 "idProduct='" + idProduct + '\'' +
-                ", code='" + code + '\'' +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
-                ", supplier='" + supplier + '\'' +
+                ", supplier='" + idSupplier + '\'' +
+                ", quantity='" + quantity + '\'' +
                 ", registrationDate=" + registrationDate +
                 '}';
     }
