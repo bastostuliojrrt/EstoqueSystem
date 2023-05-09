@@ -1,10 +1,10 @@
 package application;
 
 import entities.Product;
-import entities.Stock;
+
 
 import java.util.*;
-import java.util.stream.Collectors;
+
 
 // Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
 // then press Enter. You can now see whitespace characters in your code.
@@ -20,7 +20,7 @@ public class Main {
         Date date = new Date();
 
         // Variaveis globais
-        int decision = 0;
+        int decision;
 
         //Mock de dados para teste
         Product teste1 = new Product();
@@ -39,14 +39,14 @@ public class Main {
         listProducts.add(teste4);
 
         do {
-            System.out.println("-------------- Menu --------------");
+            System.out.println("-------------- Menu --------------\n");
             System.out.println("1 - Produtos \n2 - Fornecedores \n3 - Estoque \n0 - Sair\n");
             System.out.print("Escolha uma opção: ");
             decision = sc.nextInt();
 
             if (decision == 1) {
                 do {
-                    System.out.println("\n-------------- Menu de Produtos --------------");
+                    System.out.println("\n-------------- Menu de Produtos --------------\n");
                     System.out.println("1 - Cadastrar Produto \n2 - Procurar Produto \n3 - Lista de Produtos \n4 - Deletar Produto\n5 - Sair\n");
                     System.out.print("Escolha uma opção: ");
                     decision = sc.nextInt();
