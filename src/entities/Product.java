@@ -30,7 +30,6 @@ public class Product {
 
     // Método para filtragem de produtos
     public List<Product> filterProduct(String productName, List<Product> listProducts){
-
         return listProducts.stream().filter(productFiltred -> Objects.equals(productFiltred.name, productName)).collect(Collectors.toList());
     }
 
