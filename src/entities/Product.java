@@ -31,15 +31,23 @@ public class Product {
     // Método para filtragem de produtos
     public List<Product> filterProduct(String productName, List<Product> listProducts){
 
-        List<Product> result = listProducts.stream().filter(productFiltred -> Objects.equals(productFiltred.name, productName)).collect(Collectors.toList());
-
-        return result;
+        return listProducts.stream().filter(productFiltred -> Objects.equals(productFiltred.name, productName)).collect(Collectors.toList());
     }
 
     // Método para listagem de todos os produtos
     public void listAllProducts(List<Product> listProducts){
         for (Product products: listProducts) {
             System.out.println(products);
+        }
+    }
+
+    // Método para deleção de produtos
+    public void deleteProduct(List<Product> listProducts, int idProduct) {
+        for (int i = 0; i < listProducts.size(); i++) {
+            if (listProducts.get(i).getIdProduct() == idProduct){
+                System.out.println("Produto " + listProducts.get(i).getIdProduct() + " deletado.");
+                listProducts.remove(i);
+            }
         }
     }
 
