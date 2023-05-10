@@ -1,6 +1,7 @@
 package application;
 
 import entities.Product;
+import entities.Supplier;
 
 
 import java.util.*;
@@ -15,8 +16,12 @@ public class Main {
         Locale.setDefault(Locale.US);
 
         // Instancia da lista de produtos
-        List<Product> listProducts = new ArrayList<>();
         Product product = new Product();
+        List<Product> listProducts = new ArrayList<>();
+
+        Supplier supplier = new Supplier();
+        List<Supplier> listSuppliers = new ArrayList<>();
+        
         Date date = new Date();
 
         // Variaveis globais
@@ -46,9 +51,7 @@ public class Main {
 
             if (decision == 1) {
                 do {
-                    System.out.println("\n-------------- Menu de Produtos --------------\n");
-                    System.out.println("1 - Cadastrar Produto \n2 - Procurar Produto \n3 - Lista de Produtos \n4 - Deletar Produto\n5 - Sair\n");
-                    System.out.print("Escolha uma opção: ");
+                    product.menuProdutcts();
                     decision = sc.nextInt();
 
                     switch (decision) {
@@ -111,8 +114,10 @@ public class Main {
                     }
 
                 } while (decision != 5);
-            }else {
-                System.out.println("Opção inválida.");
+            } else if (decision == 2) {
+                do {
+
+                }while (decision != 5);
             }
         }while (decision != 0);
 
