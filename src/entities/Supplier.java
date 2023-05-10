@@ -21,6 +21,12 @@ public class Supplier extends Person{
         this.registrationDate = registrationDate;
     }
 
+    public void menuSupplier(){
+        System.out.println("\n-------------- Menu de Produtos --------------\n");
+        System.out.println("1 - Cadastrar Fornecedor \n2 - Procurar Fornecedor \n3 - Lista de Fornecedores \n4 - Deletar Fornecedores\n5 - Voltar\n");
+        System.out.print("Escolha uma opção: ");
+    }
+
     public int getIdSupplier() {
         return idSupplier;
     }

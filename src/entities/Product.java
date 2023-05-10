@@ -29,12 +29,13 @@ public class Product {
     }
 
     // Método para filtragem de produtos
-    public List<Product> filterProduct(String productName, List<Product> listProducts){
+    public List<Product> searchProduct(String productName, List<Product> listProducts){
         return listProducts.stream().filter(productFiltred -> Objects.equals(productFiltred.name, productName)).collect(Collectors.toList());
     }
 
     // Método para listagem de todos os produtos
     public void listAllProducts(List<Product> listProducts){
+        System.out.println("\n-------------- Lista de Produtos --------------\n");
         for (Product products: listProducts) {
             System.out.println(products);
         }
@@ -52,7 +53,7 @@ public class Product {
 
     public void menuProdutcts(){
         System.out.println("\n-------------- Menu de Produtos --------------\n");
-        System.out.println("1 - Cadastrar Produto \n2 - Procurar Produto \n3 - Lista de Produtos \n4 - Deletar Produto\n5 - Sair\n");
+        System.out.println("1 - Cadastrar Produto \n2 - Procurar Produto \n3 - Lista de Produtos \n4 - Deletar Produto\n5 - Voltar\n");
         System.out.print("Escolha uma opção: ");
     }
 

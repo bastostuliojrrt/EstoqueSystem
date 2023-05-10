@@ -49,12 +49,14 @@ public class Main {
             System.out.print("Escolha uma opção: ");
             decision = sc.nextInt();
 
+            // Entra no menu de produtos
             if (decision == 1) {
                 do {
                     product.menuProdutcts();
                     decision = sc.nextInt();
 
                     switch (decision) {
+
                         case 1:// Cadastrar produtos
 
                             System.out.println("\n-------------- Cadastro de Produtos --------------\n");
@@ -73,9 +75,8 @@ public class Main {
                             product.registerProduct(idProduct, name, description, idSupplier, quantity, date);
 
                             listProducts.add(product);
-                            System.out.println();
 
-                            System.out.println("Lista de produtos:");
+                            System.out.println("\nLista de produtos:");
                             product.listAllProducts(listProducts);
                             break;
 
@@ -86,14 +87,13 @@ public class Main {
                             sc.nextLine();
                             String productName = sc.nextLine();
 
-                            List<Product> result = product.filterProduct(productName, listProducts);
+                            List<Product> result = product.searchProduct(productName, listProducts);
 
                             System.out.println("\nLista de produtos:");
                             product.listAllProducts(result);
                             break;
 
                         case 3:// Listar produtos cadastrados
-                            System.out.println("\n-------------- Lista de Produtos --------------\n");
                             product.listAllProducts(listProducts);
                             break;
 
@@ -109,16 +109,24 @@ public class Main {
 
                             break;
 
-                        default:
-                            System.out.println("Opção inválida.");
+                    }
+                } while (decision != 5);
+
+            // Entra no menu de Fornecedores
+            } /*else if (decision == 2) {
+                do {
+                    supplier.menuSupplier();
+                    decision = sc.nextInt();
+
+                    switch (decision){
+
+                        case 1:
+
+
                     }
 
-                } while (decision != 5);
-            } else if (decision == 2) {
-                do {
-
                 }while (decision != 5);
-            }
+            }*/
         }while (decision != 0);
 
     }
