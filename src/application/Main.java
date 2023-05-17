@@ -43,6 +43,23 @@ public class Main {
         listProducts.add(teste3);
         listProducts.add(teste4);
 
+        //Mock de dados para teste
+        Supplier teste5 = new Supplier();
+        Supplier teste6 = new Supplier();
+        Supplier teste7 = new Supplier();
+        Supplier teste8 = new Supplier();
+
+        teste5.registerSupplier("Rua", "Recife", "PE", "50761010", "81996312364", "teste@gmail.com", 1234, "Fornec", "29374692000134", date);
+        teste6.registerSupplier("Rua", "Recife", "PE", "50761010", "81996312364", "teste@gmail.com", 5678, "Fornec1", "29374692000134", date);
+        teste7.registerSupplier("Rua", "Recife", "PE", "50761010", "81996312364", "teste@gmail.com", 9101, "Fornec2", "29374692000134", date);
+        teste8.registerSupplier("Rua", "Recife", "PE", "50761010", "81996312364", "teste@gmail.com", 1213, "Fornec", "29374692000134", date);
+
+
+        listSuppliers.add(teste5);
+        listSuppliers.add(teste6);
+        listSuppliers.add(teste7);
+        listSuppliers.add(teste8);
+
         do {
             System.out.println("-------------- Menu --------------\n");
             System.out.println("1 - Produtos \n2 - Fornecedores \n3 - Estoque \n0 - Sair\n");
@@ -60,20 +77,22 @@ public class Main {
                         case 1:// Cadastrar produtos
 
                             System.out.println("\n-------------- Cadastro de Produtos --------------\n");
-                            System.out.println("Digite o ID do produto: ");
+                            System.out.print("Digite o ID do produto: ");
                             int idProduct = sc.nextInt();
-                            System.out.println("Digite o nome do produto: ");
+                            System.out.print("Digite o nome do produto: ");
                             sc.nextLine();
                             String name = sc.nextLine();
-                            System.out.println("Informe a descrição do produto: ");
+                            System.out.print("Informe a descrição do produto: ");
                             String description = sc.nextLine();
-                            System.out.println("Informe o ID do Fornecedor do produto: ");
-                            int idSupplier = sc.nextInt();
-                            System.out.println("Informe a quantidade do produto: ");
+                            int idSupplier;
+                            do {
+                                System.out.print("Informe o ID do Fornecedor do produto: ");
+                                idSupplier = sc.nextInt();
+                            }while (!product.checkSupplier(idSupplier, listSuppliers));
+                            System.out.print("Informe a quantidade do produto: ");
                             int quantity = sc.nextInt();
 
                             product.registerProduct(idProduct, name, description, idSupplier, quantity, date);
-
                             listProducts.add(product);
 
                             System.out.println("\nLista de produtos:");
@@ -83,14 +102,18 @@ public class Main {
                         case 2:// Procurar produtos
 
                             System.out.println("\n-------------- Procurar Produtos --------------\n");
-                            System.out.println("Digite o nome do produto: ");
+                            System.out.print("Digite o nome do produto: ");
                             sc.nextLine();
                             String productName = sc.nextLine();
 
                             List<Product> result = product.searchProduct(productName, listProducts);
 
                             System.out.println("\nLista de produtos:");
-                            product.listAllProducts(result);
+                            if (result.size() == 0){
+                                System.out.println("Produto não encontrado");
+                            }else {
+                                product.listAllProducts(result);
+                            }
                             break;
 
                         case 3:// Listar produtos cadastrados
@@ -113,20 +136,82 @@ public class Main {
                 } while (decision != 5);
 
             // Entra no menu de Fornecedores
-            } /*else if (decision == 2) {
+            } else if (decision == 2) {
                 do {
                     supplier.menuSupplier();
                     decision = sc.nextInt();
 
                     switch (decision){
 
-                        case 1:
+                        case 1: // Cadastrar Fornecedores
+                            System.out.println("\n-------------- Cadastro de Fornecedores --------------\n");
+                            int idSupplier;
+                            do {
+                                System.out.print("Informe o ID do fornecedor: ");
+                                idSupplier = sc.nextInt();
+                            }while (supplier.checkDuplicity(idSupplier, listSuppliers));
+                            System.out.print("Informe a Razão Social: ");
+                            sc.nextLine();
+                            String name = sc.nextLine();
+                            System.out.print("Informe o CPF/CNPJ: ");
+                            String cgc = sc.nextLine();
+                            System.out.print("Informe o endereço: ");
+                            String address = sc.nextLine();
+                            System.out.print("Informe a Cidade: ");
+                            String city = sc.nextLine();
+                            System.out.print("Informe o estado: ");
+                            String state = sc.nextLine();
+                            System.out.print("Informe o CEP: ");
+                            String postalCode = sc.nextLine();
+                            System.out.print("Informe o telefone/celular: ");
+                            String cellPhone = sc.nextLine();
+                            System.out.print("Informe o email: ");
+                            String email = sc.nextLine();
+
+                            supplier.registerSupplier(address, city, state, postalCode, cellPhone, email, idSupplier, name, cgc, date);
+
+                            listSuppliers.add(supplier);
+
+                            supplier.listAllSuppliers(listSuppliers);
+
+                            break;
+
+                        case 2:
+                            System.out.println("\n-------------- Lista de Fornecedores --------------\n");
+                            System.out.print("Digite a Razão Social do fornecedor: ");
+                            sc.nextLine();
+                            String nameSupplier = sc.nextLine();
+
+                            List<Supplier> result = supplier.searchSupplier(nameSupplier, listSuppliers);
+
+                            System.out.println("\nLista de Fornecedores:");
+                            if (result.size() == 0){
+                                System.out.println("Fornecedor não encontrado");
+                            }else {
+                                supplier.listAllSuppliers(result);
+                            }
+                            break;
+
+                        case 3:
+                            supplier.listAllSuppliers(listSuppliers);
+                            break;
+
+                        case 4:
+                            System.out.println("\n-------------- Deletar Fornecedor --------------\n");
+                            supplier.listAllSuppliers(listSuppliers);
+                            System.out.print("\nDigite o ID do fornecedor que deseja deletar: ");
+                            idSupplier = sc.nextInt();
+
+                            supplier.deleteSupplier(idSupplier, listSuppliers);
+
+                            System.out.println("\nNova lista de Fornecedores:\n");
+                            supplier.listAllSuppliers(listSuppliers);
 
 
                     }
 
                 }while (decision != 5);
-            }*/
+            }
         }while (decision != 0);
 
     }

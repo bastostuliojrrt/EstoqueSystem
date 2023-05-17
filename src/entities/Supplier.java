@@ -1,6 +1,9 @@
 package entities;
 
 import java.util.Date;
+import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class Supplier extends Person{
 
@@ -8,17 +11,57 @@ public class Supplier extends Person{
     private String name;
     private String cgc;
     private Date registrationDate;
-
     public Supplier(){
 
     }
 
-    public Supplier(String address, String city, String state, String postalCode, String cellPhone, String email, int idSupplier, String name, String cgc, Date registrationDate) {
-        super(address, city, state, postalCode, cellPhone, email);
-        this.idSupplier = idSupplier;
-        this.name = name;
-        this.cgc = cgc;
-        this.registrationDate = registrationDate;
+    public void registerSupplier(String address, String city, String state, String postalCode, String cellPhone, String email, int idSupplier, String name, String cgc, Date registrationDate) {
+       setAddress(address);
+       setCity(city);
+       setState(state);
+       setPostalCode(postalCode);
+       setCellPhone(cellPhone);
+       setEmail(email);
+       setIdSupplier(idSupplier);
+       setName(name);
+       setCgc(cgc);
+       setRegistrationDate(registrationDate);
+    }
+
+    public List<Supplier> searchSupplier(String nameSupplier, List<Supplier> listSuppliers){
+        return listSuppliers.stream().filter(supplierFiltred -> Objects.equals(supplierFiltred.name, nameSupplier)).collect(Collectors.toList());
+    }
+
+    public void listAllSuppliers(List<Supplier> listSuppliers){
+        System.out.println("-------------- Lista de Fornecedores --------------\n");
+        for (Supplier suppliers: listSuppliers) {
+            System.out.println(suppliers);
+        }
+    }
+
+    public void deleteSupplier(int idSupplier, List<Supplier> listSuppliers){
+        for (int i = 0; i < listSuppliers.size(); i++){
+            if (listSuppliers.get(i).getIdSupplier() == idSupplier){
+                System.out.println("Fornecedor " + listSuppliers.get(i).getIdSupplier() + " deletado.");
+                listSuppliers.remove(i);
+            }
+        }
+    }
+
+    public boolean checkDuplicity(int idSupplier, List<Supplier> listSuppliers){
+
+        boolean verify = false;
+
+        for (Supplier suppliers: listSuppliers) {
+            if (suppliers.idSupplier == idSupplier){
+                System.out.println("Este código de fornecedor já existe");
+
+                verify = true;
+
+                break;
+            }
+        }
+        return verify;
     }
 
     public void menuSupplier(){

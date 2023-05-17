@@ -35,7 +35,7 @@ public class Product {
 
     // Método para listagem de todos os produtos
     public void listAllProducts(List<Product> listProducts){
-        System.out.println("\n-------------- Lista de Produtos --------------\n");
+        System.out.println("-------------- Lista de Produtos --------------\n");
         for (Product products: listProducts) {
             System.out.println(products);
         }
@@ -49,6 +49,21 @@ public class Product {
                 listProducts.remove(i);
             }
         }
+    }
+
+    public boolean checkSupplier(int idSupplier, List<Supplier> listSuppliers){
+        boolean verify = false;
+
+        for (Supplier suppliers: listSuppliers) {
+            if (suppliers.getIdSupplier() == idSupplier){
+                verify = true;
+                break;
+            }
+        }
+        if (!verify){
+            System.out.println("Fornecedor não encontrado");
+        }
+        return verify;
     }
 
     public void menuProdutcts(){
