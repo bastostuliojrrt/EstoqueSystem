@@ -30,7 +30,7 @@ public class Product {
 
     // Método para filtragem de produtos
     public List<Product> searchProduct(String productName, List<Product> listProducts){
-        return listProducts.stream().filter(productFiltred -> Objects.equals(productFiltred.name, productName)).collect(Collectors.toList());
+        return listProducts.stream().filter(productFiltred -> Objects.equals(productFiltred.getName(), productName)).collect(Collectors.toList());
     }
 
     // Método para listagem de todos os produtos
@@ -51,6 +51,7 @@ public class Product {
         }
     }
 
+    // Método para verificar se o fornecedor está cadastrado
     public boolean checkSupplier(int idSupplier, List<Supplier> listSuppliers){
         boolean verify = false;
 
@@ -61,7 +62,43 @@ public class Product {
             }
         }
         if (!verify){
-            System.out.println("Fornecedor não encontrado");
+            System.out.println("Fornecedor não encontrado.");
+        }
+        return verify;
+    }
+
+    // Método para verificar se o produto existe
+    public boolean checkProduct(int idProduct, List<Product> listProducts){
+        boolean verify = false;
+
+        for(Product products: listProducts){
+            if (products.getIdProduct() == idProduct){
+                verify = true;
+                break;
+            }
+        }
+
+        if (!verify){
+            System.out.println("Este produto não existe.");
+        }
+
+        return verify;
+
+    }
+
+    // Método para verificar se já existe um produto com o idProduct informado para não deixar duplicar
+    public boolean checkDuplicity(int idProduct, List<Product> listProducts){
+
+        boolean verify = false;
+
+        for (Product products: listProducts) {
+            if (products.getIdProduct() == idProduct){
+                System.out.println("Este código de produto já existe.");
+
+                verify = true;
+
+                break;
+            }
         }
         return verify;
     }

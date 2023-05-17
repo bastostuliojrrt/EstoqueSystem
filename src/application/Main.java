@@ -77,8 +77,11 @@ public class Main {
                         case 1:// Cadastrar produtos
 
                             System.out.println("\n-------------- Cadastro de Produtos --------------\n");
-                            System.out.print("Digite o ID do produto: ");
-                            int idProduct = sc.nextInt();
+                            int idProduct;
+                            do {
+                                System.out.print("Digite o ID do produto: ");
+                                idProduct = sc.nextInt();
+                            }while (product.checkDuplicity(idProduct, listProducts));
                             System.out.print("Digite o nome do produto: ");
                             sc.nextLine();
                             String name = sc.nextLine();
@@ -122,10 +125,11 @@ public class Main {
 
                         case 4: // Deletar produtos
                             System.out.println("\n-------------- Deletar Produto --------------\n");
-                            System.out.println("Sua lista de produtos:\n");
                             product.listAllProducts(listProducts);
-                            System.out.print("\nDigite o ID do produto que deseja deletar: ");
-                            idProduct = sc.nextInt();
+                            do {
+                                System.out.print("\nDigite o ID do produto que deseja deletar: ");
+                                idProduct = sc.nextInt();
+                            }while (!product.checkProduct(idProduct, listProducts));
                             product.deleteProduct(listProducts, idProduct);
                             System.out.println("\nNova lista de produtos:\n");
                             product.listAllProducts(listProducts);
@@ -199,8 +203,10 @@ public class Main {
                         case 4:
                             System.out.println("\n-------------- Deletar Fornecedor --------------\n");
                             supplier.listAllSuppliers(listSuppliers);
-                            System.out.print("\nDigite o ID do fornecedor que deseja deletar: ");
-                            idSupplier = sc.nextInt();
+                            do {
+                                System.out.print("\nDigite o ID do fornecedor que deseja deletar: ");
+                                idSupplier = sc.nextInt();
+                            }while (!supplier.checkSupplier(idSupplier, listSuppliers));
 
                             supplier.deleteSupplier(idSupplier, listSuppliers);
 

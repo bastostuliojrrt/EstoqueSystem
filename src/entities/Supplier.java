@@ -11,10 +11,12 @@ public class Supplier extends Person{
     private String name;
     private String cgc;
     private Date registrationDate;
+
     public Supplier(){
 
     }
 
+    // Cadastra o fornecedor
     public void registerSupplier(String address, String city, String state, String postalCode, String cellPhone, String email, int idSupplier, String name, String cgc, Date registrationDate) {
        setAddress(address);
        setCity(city);
@@ -29,9 +31,10 @@ public class Supplier extends Person{
     }
 
     public List<Supplier> searchSupplier(String nameSupplier, List<Supplier> listSuppliers){
-        return listSuppliers.stream().filter(supplierFiltred -> Objects.equals(supplierFiltred.name, nameSupplier)).collect(Collectors.toList());
+        return listSuppliers.stream().filter(supplierFiltred -> Objects.equals(supplierFiltred.getName(), nameSupplier)).collect(Collectors.toList());
     }
 
+    // Lista todos os fornecedores
     public void listAllSuppliers(List<Supplier> listSuppliers){
         System.out.println("-------------- Lista de Fornecedores --------------\n");
         for (Supplier suppliers: listSuppliers) {
@@ -39,6 +42,7 @@ public class Supplier extends Person{
         }
     }
 
+    // Método para deletar o fornecedor
     public void deleteSupplier(int idSupplier, List<Supplier> listSuppliers){
         for (int i = 0; i < listSuppliers.size(); i++){
             if (listSuppliers.get(i).getIdSupplier() == idSupplier){
@@ -46,15 +50,17 @@ public class Supplier extends Person{
                 listSuppliers.remove(i);
             }
         }
+
     }
 
+    // Método para verificar se já existe um fornecedor com o idSupplier informado para não deixar duplicar
     public boolean checkDuplicity(int idSupplier, List<Supplier> listSuppliers){
 
         boolean verify = false;
 
         for (Supplier suppliers: listSuppliers) {
-            if (suppliers.idSupplier == idSupplier){
-                System.out.println("Este código de fornecedor já existe");
+            if (suppliers.getIdSupplier() == idSupplier){
+                System.out.println("Este código de fornecedor já existe.");
 
                 verify = true;
 
@@ -62,6 +68,25 @@ public class Supplier extends Person{
             }
         }
         return verify;
+    }
+
+    // Método para verificar se o idSupplier existe
+    public boolean checkSupplier(int idSupplier, List<Supplier> listSuppliers){
+        boolean verify = false;
+
+        for (Supplier suppliers: listSuppliers){
+            if (suppliers.getIdSupplier() == idSupplier){
+                verify = true;
+                break;
+            }
+        }
+
+        if (!verify){
+            System.out.println("Este fornecedor não existe.");
+        }
+
+        return verify;
+
     }
 
     public void menuSupplier(){
@@ -105,10 +130,16 @@ public class Supplier extends Person{
     @Override
     public String toString() {
         return "Supplier{" +
-                "idSupplier='" + idSupplier + '\'' +
-                ", name='" + name + '\'' +
-                ", cgc='" + cgc + '\'' +
-                ", registrationDate=" + registrationDate +
+                "idSupplier= " + idSupplier +
+                ", Razão Social= " + name +
+                ", CPF/CNPJ= " + getCgc() +
+                ", cgc='" + cgc +
+                ", Endereço= " + getAddress() +
+                ", Estado= " + getState() +
+                ", CEP= " + getPostalCode() +
+                ", Telefone= " + getCellPhone() +
+                ", Email= " + getEmail() +
+                ", registrationDate= " + registrationDate +
                 '}';
     }
 }
