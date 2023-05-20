@@ -4,7 +4,6 @@ import entities.Product;
 import entities.Supplier;
 import screen.*;
 
-import java.awt.*;
 import java.util.*;
 import java.util.List;
 
@@ -24,7 +23,7 @@ public class Main {
         Supplier supplier = new Supplier();
         List<Supplier> listSuppliers = new ArrayList<>();
         // Instancia da classe com Menus
-        Menus menu = new Menus();
+        Figures figures = new Figures();
         //Instancia da data
         Date date = new Date();
 
@@ -66,20 +65,20 @@ public class Main {
 
         // Início do programa
         do {
-            menu.generalMenu();
+            figures.generalMenu();
             decision = sc.nextInt();
 
             // Entra no menu de produtos
             if (decision == 1) {
                 do {
-                    menu.menuProdutcts();
+                    figures.menuProdutcts();
                     decision = sc.nextInt();
 
                     switch (decision) {
 
                         case 1:// Cadastrar produtos
 
-                            System.out.println("\n-------------- Cadastro de Produtos --------------\n");
+                            figures.menuRegisterProduct();
                             int idProduct;
                             do {
                                 System.out.print("Digite o ID do produto: ");
@@ -107,7 +106,7 @@ public class Main {
 
                         case 2:// Procurar produtos
 
-                            System.out.println("\n-------------- Procurar Produtos --------------\n");
+                            figures.menusSeachrProduct();
                             System.out.print("Digite o nome do produto: ");
                             sc.nextLine();
                             String productName = sc.nextLine();
@@ -123,11 +122,13 @@ public class Main {
                             break;
 
                         case 3:// Listar produtos cadastrados
+                            figures.menuListProduct();
+
                             product.listAllProducts(listProducts);
                             break;
 
                         case 4: // Deletar produtos
-                            System.out.println("\n-------------- Deletar Produto --------------\n");
+                            figures.menuDeleteProduct();
                             product.listAllProducts(listProducts);
                             do {
                                 System.out.print("\nDigite o ID do produto que deseja deletar: ");
@@ -145,13 +146,13 @@ public class Main {
             // Entra no menu de Fornecedores
             } else if (decision == 2) {
                 do {
-                    menu.menuSupplier();
+                    figures.menuSupplier();
                     decision = sc.nextInt();
 
                     switch (decision){
 
                         case 1: // Cadastrar Fornecedores
-                            System.out.println("\n-------------- Cadastro de Fornecedores --------------\n");
+                            figures.menuRegisterSupplier();
                             int idSupplier;
                             do {
                                 System.out.print("Informe o ID do fornecedor: ");
@@ -184,7 +185,7 @@ public class Main {
                             break;
 
                         case 2: // Busca por fornecedores
-                            System.out.println("\n-------------- Lista de Fornecedores --------------\n");
+                            figures.menusSeachrSupplier();
                             System.out.print("Digite a Razão Social do fornecedor: ");
                             sc.nextLine();
                             String nameSupplier = sc.nextLine();
@@ -200,11 +201,12 @@ public class Main {
                             break;
 
                         case 3: // Listagem de Fornecedores
+                            figures.menuListSupplier();
                             supplier.listAllSuppliers(listSuppliers);
                             break;
 
                         case 4: // Deleção de fornecedores
-                            System.out.println("\n-------------- Deletar Fornecedor --------------\n");
+                            figures.menuDeleteSupplier();
                             supplier.listAllSuppliers(listSuppliers);
                             do {
                                 System.out.print("\nDigite o ID do fornecedor que deseja deletar: ");

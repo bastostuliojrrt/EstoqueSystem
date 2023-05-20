@@ -35,7 +35,6 @@ public class Product {
 
     // Método para listagem de todos os produtos
     public void listAllProducts(List<Product> listProducts){
-        System.out.println("-------------- Lista de Produtos --------------\n");
         for (Product products: listProducts) {
             System.out.println(products);
         }

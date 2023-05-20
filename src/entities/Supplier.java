@@ -36,7 +36,6 @@ public class Supplier extends Person{
 
     // Lista todos os fornecedores
     public void listAllSuppliers(List<Supplier> listSuppliers){
-        System.out.println("-------------- Lista de Fornecedores --------------\n");
         for (Supplier suppliers: listSuppliers) {
             System.out.println(suppliers);
         }
