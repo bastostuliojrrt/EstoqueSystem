@@ -103,12 +103,6 @@ public class Product {
         return verify;
     }
 
-    public void menuProdutcts(){
-        System.out.println("\n-------------- Menu de Produtos --------------\n");
-        System.out.println("1 - Cadastrar Produto \n2 - Procurar Produto \n3 - Lista de Produtos \n4 - Deletar Produto\n5 - Voltar\n");
-        System.out.print("Escolha uma opção: ");
-    }
-
     public int getIdProduct() {
         return idProduct;
     }

@@ -2,9 +2,11 @@ package application;
 
 import entities.Product;
 import entities.Supplier;
+import screen.*;
 
-
+import java.awt.*;
 import java.util.*;
+import java.util.List;
 
 
 // Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
@@ -18,16 +20,18 @@ public class Main {
         // Instancia da lista de produtos
         Product product = new Product();
         List<Product> listProducts = new ArrayList<>();
-
+        // Instacia da lista de fornecedores
         Supplier supplier = new Supplier();
         List<Supplier> listSuppliers = new ArrayList<>();
-        
+        // Instancia da classe com Menus
+        Menus menu = new Menus();
+        //Instancia da data
         Date date = new Date();
 
         // Variaveis globais
         int decision;
 
-        //Mock de dados para teste
+        //Mock de dados do produto para teste
         Product teste1 = new Product();
         Product teste2 = new Product();
         Product teste3 = new Product();
@@ -43,7 +47,7 @@ public class Main {
         listProducts.add(teste3);
         listProducts.add(teste4);
 
-        //Mock de dados para teste
+        //Mock de dados do fornecedor para teste
         Supplier teste5 = new Supplier();
         Supplier teste6 = new Supplier();
         Supplier teste7 = new Supplier();
@@ -60,16 +64,15 @@ public class Main {
         listSuppliers.add(teste7);
         listSuppliers.add(teste8);
 
+        // Início do programa
         do {
-            System.out.println("-------------- Menu --------------\n");
-            System.out.println("1 - Produtos \n2 - Fornecedores \n3 - Estoque \n0 - Sair\n");
-            System.out.print("Escolha uma opção: ");
+            menu.generalMenu();
             decision = sc.nextInt();
 
             // Entra no menu de produtos
             if (decision == 1) {
                 do {
-                    product.menuProdutcts();
+                    menu.menuProdutcts();
                     decision = sc.nextInt();
 
                     switch (decision) {
@@ -142,7 +145,7 @@ public class Main {
             // Entra no menu de Fornecedores
             } else if (decision == 2) {
                 do {
-                    supplier.menuSupplier();
+                    menu.menuSupplier();
                     decision = sc.nextInt();
 
                     switch (decision){
@@ -180,7 +183,7 @@ public class Main {
 
                             break;
 
-                        case 2:
+                        case 2: // Busca por fornecedores
                             System.out.println("\n-------------- Lista de Fornecedores --------------\n");
                             System.out.print("Digite a Razão Social do fornecedor: ");
                             sc.nextLine();
@@ -196,11 +199,11 @@ public class Main {
                             }
                             break;
 
-                        case 3:
+                        case 3: // Listagem de Fornecedores
                             supplier.listAllSuppliers(listSuppliers);
                             break;
 
-                        case 4:
+                        case 4: // Deleção de fornecedores
                             System.out.println("\n-------------- Deletar Fornecedor --------------\n");
                             supplier.listAllSuppliers(listSuppliers);
                             do {
@@ -212,7 +215,7 @@ public class Main {
 
                             System.out.println("\nNova lista de Fornecedores:\n");
                             supplier.listAllSuppliers(listSuppliers);
-
+                            break;
 
                     }
 
