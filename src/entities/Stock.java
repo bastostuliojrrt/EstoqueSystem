@@ -5,17 +5,35 @@ import java.util.List;
 public class Stock {
 
     private String idStock;
-    private List<Product> listProducts;
-    private String storage;
+    private Product product;
+    private int quantity;
 
     public Stock(){
 
     }
 
-    public Stock(String idStock, List<Product> listProducts, String storage) {
-        this.idStock = idStock;
-        this.listProducts = listProducts;
-        this.storage = storage;
+    public Stock(Product product, int quantity) {
+        this.product = product;
+        this.quantity = quantity;
+    }
+
+    public void updateProduct(Product produto, int quantity) {
+        setProduct(produto);
+        setQuantidade(quantity);
+    }
+
+    public void addQuantity(Product product, int quantity){
+
+    }
+
+    public void removeQuantity(Product product, int quantity){
+
+    }
+
+    public void listAllAvailable(List<Stock> listStock){
+        for (Stock stock: listStock) {
+            System.out.println(listStock);
+        }
     }
 
     public String getIdStock() {
@@ -26,20 +44,20 @@ public class Stock {
         this.idStock = idStock;
     }
 
-    public List<Product> getListProducts() {
-        return listProducts;
+    public Product getProduct() {
+        return product;
     }
 
-    public void setListProducts(List<Product> listProducts) {
-        this.listProducts = listProducts;
+    public void setProduct(Product listProducts) {
+        this.product = product;
     }
 
-    public String getStorage() {
-        return storage;
+    public int getQuantidade() {
+        return quantity;
     }
 
-    public void setStorage(String storage) {
-        this.storage = storage;
+    public void setQuantidade(int quantidade) {
+        this.quantity = quantidade;
     }
 
 
@@ -47,8 +65,9 @@ public class Stock {
     public String toString() {
         return "Stock{" +
                 "idStock='" + idStock + '\'' +
-                ", product=" + listProducts +
-                ", storage='" + storage + '\'' +
+                ", product=" + product +
+                ", Quantity='" + quantity + '\'' +
                 '}';
     }
+
 }

@@ -1,6 +1,7 @@
 package application;
 
 import entities.Product;
+import entities.Stock;
 import entities.Supplier;
 import screen.*;
 
@@ -22,6 +23,9 @@ public class Main {
         // Instacia da lista de fornecedores
         Supplier supplier = new Supplier();
         List<Supplier> listSuppliers = new ArrayList<>();
+        // Instancia a Lista de Produtos no estoque
+        Stock stock = new Stock();
+        List<Stock> listStock = new ArrayList<>();
         // Instancia da classe com Menus
         Figures figures = new Figures();
         //Instancia da data
@@ -36,10 +40,10 @@ public class Main {
         Product teste3 = new Product();
         Product teste4 = new Product();
 
-        teste1.registerProduct(123, "garrafa", "garrafa", 123987, 10, date);
-        teste2.registerProduct(456, "guaraná", "garrafa", 123987, 10, date);
-        teste3.registerProduct(789, "bola", "garrafa", 123987, 10, date);
-        teste4.registerProduct(192, "garrafa", "garrafa", 123987, 10, date);
+        teste1.registerProduct(123, "garrafa", "garrafa", 123987, date);
+        teste2.registerProduct(456, "guaraná", "garrafa", 123987, date);
+        teste3.registerProduct(789, "bola", "garrafa", 123987, date);
+        teste4.registerProduct(192, "garrafa", "garrafa", 123987, date);
 
         listProducts.add(teste1);
         listProducts.add(teste2);
@@ -94,10 +98,8 @@ public class Main {
                                 System.out.print("Informe o ID do Fornecedor do produto: ");
                                 idSupplier = sc.nextInt();
                             }while (!product.checkSupplier(idSupplier, listSuppliers));
-                            System.out.print("Informe a quantidade do produto: ");
-                            int quantity = sc.nextInt();
 
-                            product.registerProduct(idProduct, name, description, idSupplier, quantity, date);
+                            product.registerProduct(idProduct, name, description, idSupplier, date);
                             listProducts.add(product);
 
                             System.out.println("\nLista de produtos:");
@@ -218,6 +220,40 @@ public class Main {
                             System.out.println("\nNova lista de Fornecedores:\n");
                             supplier.listAllSuppliers(listSuppliers);
                             break;
+
+                    }
+
+                }while (decision != 5);
+
+            } else if (decision == 3) {
+                do {
+                    figures.menuStock();
+                    decision = sc.nextInt();
+
+                    switch (decision){
+                        case 1:
+                            product.listAllProducts(listProducts);
+                            System.out.print("\nQual produto você quer atualizar a quantidade: ");
+                            int idProduct = sc.nextInt();
+                            Product produto = null;
+                            for (Product products: listProducts) {
+                                int i = 0;
+                                if (idProduct == products.getIdProduct()){
+                                    produto = listProducts.get(i);
+                                }
+                                i++;
+                            }
+
+                            System.out.print("Informe a quantidade: ");
+                            int quantity = sc.nextInt();
+
+                            stock.updateProduct(produto, quantity);
+                            listStock.add(stock);
+
+                            break;
+
+                        case 2:
+                            stock.listAllAvailable(listStock);
 
                     }
 

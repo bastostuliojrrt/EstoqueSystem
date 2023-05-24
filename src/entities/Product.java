@@ -11,7 +11,6 @@ public class Product {
     private String name;
     private String description;
     private int idSupplier;
-    private int quantity;
     private Date registrationDate;
 
     public Product() {
@@ -19,12 +18,11 @@ public class Product {
     }
 
     // Método de cadastro do produto
-    public void registerProduct(int idProduct, String name, String description, int idSupplier, int quantity, Date registrationDate){
+    public void registerProduct(int idProduct, String name, String description, int idSupplier, Date registrationDate){
         setIdProduct(idProduct);
         setName(name);
         setDescription(description);
         setIdSupplier(idSupplier);
-        setQuantity(quantity);
         setRegistrationDate(registrationDate);
     }
 
@@ -134,14 +132,6 @@ public class Product {
         this.idSupplier = idSupplier;
     }
 
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
-
     public Date getRegistrationDate() {
         return registrationDate;
     }
@@ -157,7 +147,6 @@ public class Product {
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", supplier='" + idSupplier + '\'' +
-                ", quantity='" + quantity + '\'' +
                 ", registrationDate=" + registrationDate +
                 '}';
     }

@@ -29,6 +29,14 @@ public class Figures {
         System.out.print("Escolha uma opção: ");
     }
 
+    public void menuStock(){
+        System.out.println("\n╔─━━━━━━━━━░★░━━━━━━━━━─╗\n" +
+                              "        ESTOQUE\n" +
+                             "╚─━━━━━━━━━░★░━━━━━━━━━─╝\n");
+        System.out.println("1 - Atualizar Produto \n2 - Adicionar Quantidade \n3 - Remover Quantidade \n4 - Listar Produtos Disponíveis\n5 - Voltar\n");
+        System.out.print("Escolha uma opção: ");
+    }
+
     public void menuRegisterProduct(){
         System.out.println("\n╔─━━━━━━━━━░★░━━━━━━━━━─╗\n" +
                            "   CADASTRO DE PRODUTOS\n" +
@@ -37,32 +45,32 @@ public class Figures {
 
     public void menusSeachrProduct(){
         System.out.println("\n╔─━━━━━━━━━░★░━━━━━━━━━─╗\n" +
-                "    BUSCA POR PRODUTOS\n" +
-                "╚─━━━━━━━━━░★░━━━━━━━━━─╝\n");
+                             "    BUSCA POR PRODUTOS\n" +
+                             "╚─━━━━━━━━━░★░━━━━━━━━━─╝\n");
     }
 
     public void menuListProduct(){
         System.out.println("\n╔─━━━━━━━━━░★░━━━━━━━━━─╗\n" +
-                           "   LISTAGEM DE PRODUTOS\n" +
-                           "╚─━━━━━━━━━░★░━━━━━━━━━─╝\n");
+                            "   LISTAGEM DE PRODUTOS\n" +
+                             "╚─━━━━━━━━━░★░━━━━━━━━━─╝\n");
     }
 
     public void menuDeleteProduct(){
         System.out.println("\n╔─━━━━━━━━━░★░━━━━━━━━━─╗\n" +
-                "   EXCLUSÃO DE PRODUTOS\n" +
-                "╚─━━━━━━━━━░★░━━━━━━━━━─╝\n");
+                             "   EXCLUSÃO DE PRODUTOS\n" +
+                             "╚─━━━━━━━━━░★░━━━━━━━━━─╝\n");
     }
 
     public void menuRegisterSupplier(){
         System.out.println("\n╔─━━━━━━━━━░★░━━━━━━━━━─╗\n" +
-                "  CADASTRO DE FORNECEDOR\n" +
-                "╚─━━━━━━━━━░★░━━━━━━━━━─╝\n");
+                             "  CADASTRO DE FORNECEDOR\n" +
+                             "╚─━━━━━━━━━░★░━━━━━━━━━─╝\n");
     }
 
     public void menusSeachrSupplier(){
         System.out.println("\n╔─━━━━━━━━━━░★░━━━━━━━━━━─╗\n" +
-                "    BUSCA POR FORNECEDOR\n" +
-                "╚─━━━━━━━━━━░★░━━━━━━━━━━─╝\n");
+                            "    BUSCA POR FORNECEDOR\n" +
+                             "╚─━━━━━━━━━━░★░━━━━━━━━━━─╝\n");
     }
 
     public void menuListSupplier(){
@@ -75,6 +83,12 @@ public class Figures {
         System.out.println("\n╔─━━━━━━━━━░★░━━━━━━━━━━━─╗\n" +
                 "   EXCLUSÃO DE FORNECEDOR\n" +
                 "╚─━━━━━━━━━░★░━━━━━━━━━━━─╝\n");
+    }
+
+    public void menuUpdateStock(){
+        System.out.println("\n╔─━━━━━━━━━░★░━━━━━━━━━━━─╗\n" +
+                             "   Atualização do Estoque\n" +
+                             "╚─━━━━━━━━━░★░━━━━━━━━━━━─╝\n");
     }
 
     public void load(){
