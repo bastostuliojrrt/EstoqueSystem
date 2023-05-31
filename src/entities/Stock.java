@@ -1,38 +1,49 @@
 package entities;
 
 import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class Stock {
 
-    private String idStock;
-    private Product product;
-    private int quantity;
+    private String idStock = "3128";
+    private List<Product> listStock;
 
     public Stock(){
 
     }
 
-    public Stock(Product product, int quantity) {
-        this.product = product;
-        this.quantity = quantity;
+    public void addQuantity(List<Product> listProducts, int idProduct,int quantity){
+        for (Product products: listProducts) {
+            if (idProduct == products.getIdProduct()){
+                products.setQuantidade(products.getQuantidade() + quantity);
+            }
+        }
     }
 
-    public void updateProduct(Product produto, int quantity) {
-        setProduct(produto);
-        setQuantidade(quantity);
+    public void removeQuantity(List<Product> listProducts, int idProduct,int quantity){
+        for (Product products: listProducts) {
+            if (idProduct == products.getIdProduct()){
+                products.setQuantidade(products.getQuantidade() - quantity);
+            }
+        }
     }
 
-    public void addQuantity(Product product, int quantity){
-
+    public void updateProduct(List<Product> listProducts,int idProduct,int quantity){
+        for (Product products: listProducts) {
+            if (idProduct == products.getIdProduct()){
+                products.setQuantidade(quantity);
+            }
+        }
     }
 
-    public void removeQuantity(Product product, int quantity){
-
-    }
-
-    public void listAllAvailable(List<Stock> listStock){
-        for (Stock stock: listStock) {
-            System.out.println(listStock);
+    public void listAllAvailable(List<Product> listProducts){
+        int i = 0;
+        for (Product products: listProducts) {
+            if (products.getQuantidade() > 0){
+                System.out.println("\n"+listProducts.get(i));
+            }
+            i++;
         }
     }
 
@@ -44,29 +55,19 @@ public class Stock {
         this.idStock = idStock;
     }
 
-    public Product getProduct() {
-        return product;
+    public List<Product> getListStock(List<Product> listProducts) {
+        return listStock;
     }
 
-    public void setProduct(Product listProducts) {
-        this.product = product;
+    public void setListStock(List<Product> listStock) {
+        this.listStock = listStock;
     }
-
-    public int getQuantidade() {
-        return quantity;
-    }
-
-    public void setQuantidade(int quantidade) {
-        this.quantity = quantidade;
-    }
-
 
     @Override
     public String toString() {
         return "Stock{" +
                 "idStock='" + idStock + '\'' +
-                ", product=" + product +
-                ", Quantity='" + quantity + '\'' +
+                ", Stock=" + listStock +
                 '}';
     }
 

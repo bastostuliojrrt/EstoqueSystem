@@ -61,7 +61,6 @@ public class Main {
         teste7.registerSupplier("Rua", "Recife", "PE", "50761010", "81996312364", "teste@gmail.com", 9101, "Fornec2", "29374692000134", date);
         teste8.registerSupplier("Rua", "Recife", "PE", "50761010", "81996312364", "teste@gmail.com", 1213, "Fornec", "29374692000134", date);
 
-
         listSuppliers.add(teste5);
         listSuppliers.add(teste6);
         listSuppliers.add(teste7);
@@ -230,31 +229,63 @@ public class Main {
                     figures.menuStock();
                     decision = sc.nextInt();
 
-                    switch (decision){
+                    switch (decision) {
                         case 1:
                             product.listAllProducts(listProducts);
-                            System.out.print("\nQual produto você quer atualizar a quantidade: ");
-                            int idProduct = sc.nextInt();
-                            Product produto = null;
+                            int idProduct;
+                            do {
+                                System.out.print("\nQual produto você quer atualizar a quantidade: ");
+                                idProduct = sc.nextInt();
+                            } while (!product.checkProduct(idProduct, listProducts));
+
+                            System.out.print("Informe a quantidade a ser atualizada: ");
+                            int qtProduct = sc.nextInt();
+
                             for (Product products: listProducts) {
-                                int i = 0;
                                 if (idProduct == products.getIdProduct()){
-                                    produto = listProducts.get(i);
+                                    stock.updateProduct(listProducts, idProduct, qtProduct);
                                 }
-                                i++;
                             }
 
-                            System.out.print("Informe a quantidade: ");
-                            int quantity = sc.nextInt();
-
-                            stock.updateProduct(produto, quantity);
-                            listStock.add(stock);
+                            stock.listAllAvailable(listProducts);
 
                             break;
 
                         case 2:
-                            stock.listAllAvailable(listStock);
+                            System.out.print("\nQual produto você deseja adicionar quantidade: ");
+                            idProduct = sc.nextInt();
+                            System.out.print("Informe a quantidade a ser removida: ");
+                            qtProduct = sc.nextInt();
+                            for (Product products : listProducts) {
+                                if (idProduct == products.getIdProduct()) {
+                                    stock.addQuantity(listProducts, idProduct, qtProduct);
+                                }
+                            }
 
+                            System.out.println("Quantidade atualizada:");
+                            stock.listAllAvailable(listProducts);
+
+                            break;
+
+                        case 3:
+                            stock.listAllAvailable(listProducts);
+                            System.out.print("\nQual produto você deseja retirar quantidade: ");
+                            idProduct = sc.nextInt();
+                            System.out.print("Informe a quantidade a ser adicionada: ");
+                            qtProduct = sc.nextInt();
+                            for (Product products : listProducts) {
+                                if (idProduct == products.getIdProduct()) {
+                                    stock.removeQuantity(listProducts, idProduct, qtProduct);
+                                }
+                            }
+
+                            System.out.println("Quantidade atualizada:");
+                            stock.listAllAvailable(listProducts);
+
+                            break;
+
+                        case 5:
+                            stock.listAllAvailable(listProducts);
                     }
 
                 }while (decision != 5);

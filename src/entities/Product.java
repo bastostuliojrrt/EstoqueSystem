@@ -11,6 +11,9 @@ public class Product {
     private String name;
     private String description;
     private int idSupplier;
+
+    private int quantidade = 0;
+
     private Date registrationDate;
 
     public Product() {
@@ -132,6 +135,14 @@ public class Product {
         this.idSupplier = idSupplier;
     }
 
+    public int getQuantidade() {
+        return quantidade;
+    }
+
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade;
+    }
+
     public Date getRegistrationDate() {
         return registrationDate;
     }
@@ -147,6 +158,7 @@ public class Product {
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", supplier='" + idSupplier + '\'' +
+                ", quantity='" + quantidade + '\'' +
                 ", registrationDate=" + registrationDate +
                 '}';
     }

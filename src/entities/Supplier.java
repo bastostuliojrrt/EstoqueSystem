@@ -16,6 +16,14 @@ public class Supplier extends Person{
 
     }
 
+    public Supplier(String address, String city, String state, String postalCode, String cellPhone, String email, int idSupplier, String name, String cgc, Date registrationDate) {
+        super(address, city, state, postalCode, cellPhone, email);
+        this.idSupplier = idSupplier;
+        this.name = name;
+        this.cgc = cgc;
+        this.registrationDate = registrationDate;
+    }
+
     // Cadastra o fornecedor
     public void registerSupplier(String address, String city, String state, String postalCode, String cellPhone, String email, int idSupplier, String name, String cgc, Date registrationDate) {
        setAddress(address);
